@@ -25,7 +25,7 @@
         </div>
         <div class="num">
           <span class="params-name">数量</span>
-          <el-input-number v-model="num" :step="1"></el-input-number>
+          <el-input-number v-model="num" :min="1" :max="10"></el-input-number>
         </div>
         <div class="buy">
           <el-button type="primary">加入购物车</el-button>

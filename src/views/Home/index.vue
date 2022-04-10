@@ -53,7 +53,7 @@
                 <div class="good-price pr">
                   <div class="good-btns">
                     <el-button>查看详情</el-button>
-                    <el-button type="primary">加入购物车</el-button>
+                    <el-button type="primary" @click="addItem(item)">加入购物车</el-button>
                   </div>
                   <div class="good-amt">
                     <span>￥</span>{{item.price}}
@@ -81,7 +81,7 @@
                   <div class="good-price pr">
                     <div class="good-btns">
                       <el-button>查看详情</el-button>
-                      <el-button type="primary">加入购物车</el-button>
+                      <el-button type="primary" @click="addItem(item)">加入购物车</el-button>
                     </div>
                     <div class="good-amt">
                       <span>￥</span>{{item.price}}
@@ -280,12 +280,18 @@ export default {
     },
     addItem(item) {
       let carts = JSON.parse(localStorage.getItem('myCart')) || [];
-      carts.push({
-        ...item,
-        selected: true,
-        count: 1,
-        totalAmt: item.price*1
-      })
+      let findIndex = carts.findIndex(list=>list.id==item.id)
+      if(findIndex!=-1) {
+        carts[findIndex].count++;
+        carts[findIndex].totalAmt+=item.price;
+      }else {
+        carts.push({
+          ...item,
+          selected: true,
+          count: 1,
+          totalAmt: item.price*1
+        })
+      }
       localStorage.setItem('myCart', JSON.stringify(carts));
     }
   }
