@@ -8,7 +8,7 @@
         <div class="right-box">
           <div class="nav-list">
             <el-input placeholder="请输入内容" prefix-icon="el-icon-search"></el-input>
-            <router-link to="/goods"><a @click="changePage(2)">全部商品</a></router-link>
+            <router-link to="/goods"><a>全部商品</a></router-link>
           </div>
           <div class="nav-aside" ref="aside">
             <div class="user pr">
